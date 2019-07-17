@@ -2,8 +2,8 @@
 name: Bug report
 about: Create a report to help us improve
 title: bug report
-labels: ''
-assignees: ''
+labels: bug
+assignees: ChenYilong
 
 ---
 
