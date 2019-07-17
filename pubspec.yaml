@@ -1,0 +1,19 @@
+name: tap_water_tab_bar
+description: Highly customizable tabBar and tabBarController for Flutter
+version: 0.0.1
+author: iTeaTime(技术清谈) <luohanchenyilong@163.com>
+homepage: https://github.com/iteatimeteam/tap_water
+
+environment:
+  sdk: ">=2.0.0-dev.28.0 <3.0.0"
+
+dependencies:
+  meta: ">=1.1.1 <2.0.0"
+  redux: ">=3.0.0 <4.0.0"
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mockito: ^4.0.0
