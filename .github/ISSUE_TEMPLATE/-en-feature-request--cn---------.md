@@ -1,8 +1,8 @@
 ---
-name: Q-A问题询问
-about: 使用方法或者无法确认是否为bug，可以选择该模版
-title: "[Q-A]使用方法询问："
-labels: Q-A
+name: "[EN]Feature request.[CN]希望添加新功能."
+about: Suggest an idea for this project
+title: "[Feature request]希望添加新功能:"
+labels: enhancement
 assignees: ChenYilong
 
 ---
@@ -32,7 +32,15 @@ assignees: ChenYilong
 ----------
 
 
-## My issue:
-<!--- Please describe which issue do you want to fix. -->
 
-<!--- Please mention me to merge with wechat:chenyilong1010,或者前往 Telegram 群交流 https://t.me/CYLTabBarController -->
+**Is your feature request related to a problem? Please describe.**
+A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+
+**Describe the solution you'd like**
+A clear and concise description of what you want to happen.
+
+**Describe alternatives you've considered**
+A clear and concise description of any alternative solutions or features you've considered.
+
+**Additional context**
+Add any other context or screenshots about the feature request here.
