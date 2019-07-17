@@ -1,13 +1,10 @@
 --------------------------------------------
 
-![](http://ww2.sinaimg.cn/large/006tNc79gy1g534et4wy3j31sr0q2q9i.jpg)
-
+![](http://ww4.sinaimg.cn/large/006tNc79gy1g5389nkwlkj31sr0q242k.jpg)
 --------------------------------------------
 
 <p align="center">
-
 <a href="https://github.com/iteatimeteam/tap_water/blob/master/pubspec.yaml"><img src="https://img.shields.io/badge/Version-GetLatestVersion-green.svg?style=flat"></a>
-
 <a href="https://github.com/ChenYilong/CYLTabBarController/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat"></a>
 </p>
 

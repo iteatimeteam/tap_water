@@ -6,7 +6,7 @@
 
 --------------------------------------------
 
-![](http://ww2.sinaimg.cn/large/006tNc79gy1g534et4wy3j31sr0q2q9i.jpg)
+![](http://ww4.sinaimg.cn/large/006tNc79gy1g5389nkwlkj31sr0q242k.jpg)
 
 --------------------------------------------
 
