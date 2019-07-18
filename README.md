@@ -10,6 +10,10 @@
 
 --------------------------------------------
 
+项目简介
+--------------------------------------------
+
+对标的项目为：iOS 版本的 TabBar 库：[CYLTabBarController ]( https://github.com/ChenYilong/CYLTabBarController) ，[CYLTabBarController ](https://github.com/ChenYilong/CYLTabBarController)的作者也参与本仓库的开发维护，故可以将两个库原有接口和原有issue进行对比、迁移使用。本库新引入的问题请在本仓库提交issue。
 
 一期组件为：
 
@@ -19,4 +23,5 @@
 deadline
 --------------------------------------------
 
-如果 2019年10月24日还未看到发布alpha版本，那么本项目可能就是黄了，那就只能说声抱歉了。
+如果 2019年10月24日还未看到发布alpha版本，那么本项目可能就是黄了，那就只能说声抱歉了，请在项目发布后再 star。
+
