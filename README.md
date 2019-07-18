@@ -37,11 +37,10 @@ deadline
  团队外成员 |  [GitHub Projects 详情]( https://github.com/iteatimeteam/tap_water/projects ).
 
 
-Demo update
+updated
 --------------------------------------------
 
-时间 | 演示 | 介绍
-:-------------:|:-------------:|:-------------:
-2019, July, 18 16:39:55 | ![](http://ww2.sinaimg.cn/large/006tNc79gy1g544k1fcdjg30b20kzn2q.gif) | [issue#11 TabBar基础版本，不带加号按钮]( https://github.com/iteatimeteam/tap_water/issues/11 ) 
-
+ 演示 |  主要代码贡献方及介绍
+:-------------:|:-------------:
+| ![](http://ww2.sinaimg.cn/large/006tNc79gy1g544k1fcdjg30b20kzn2q.gif) |  ![https://github.com/ChenYilong](https://avatars1.githubusercontent.com/u/13093607?s=400&v=4) </p>[**@DargonLee**]( https://github.com/DargonLee ) </p>[issue#11 TabBar基础版本，不带加号按钮]( https://github.com/iteatimeteam/tap_water/issues/11 ) 
 
