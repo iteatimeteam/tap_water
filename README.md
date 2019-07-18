@@ -36,6 +36,6 @@ Demo update
 
 时间 | 演示 | 介绍
 :-------------:|:-------------:|:-------------:
-2019, July, 18 16:39:55 | ![](http://ww2.sinaimg.cn/large/006tNc79gy1g544k1fcdjg30b20kzn2q.gif) | [**issue#11 TabBar基础版本，不带加号按钮 **]( https://github.com/iteatimeteam/tap_water/issues/11 ) 
+2019, July, 18 16:39:55 | ![](http://ww2.sinaimg.cn/large/006tNc79gy1g544k1fcdjg30b20kzn2q.gif) | [issue#11 TabBar基础版本，不带加号按钮]( https://github.com/iteatimeteam/tap_water/issues/11 ) 
 
 
