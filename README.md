@@ -29,7 +29,13 @@ deadline
 进度
 --------------------------------------------
 
-项目进度以及任务认领请访问：[**这里**]( https://github.com/iteatimeteam/tap_water/projects ).
+项目进度以及任务认领：
+
+人员 | 地址
+:-------------:|:-------------:
+ iTeaTime(技术清谈)团队内成员 |  [**GitHub team  Discussions**](https://github.com/orgs/iteatimeteam/teams/iteatime) 
+ 团队外成员 |  [GitHub Projects 详情]( https://github.com/iteatimeteam/tap_water/projects ).
+
 
 Demo update
 --------------------------------------------
