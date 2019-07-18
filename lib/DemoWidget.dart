@@ -18,7 +18,7 @@ class DemoWidget extends StatelessWidget {
 
 class DemoStateWidget extends StatefulWidget {
   final String text;
-  ////通过构造方法传值
+  ////通过构造方法传值··
   DemoStateWidget(this.text);
 
 
