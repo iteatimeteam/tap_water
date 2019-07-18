@@ -25,3 +25,17 @@ deadline
 
 如果 2019年10月24日还未看到发布alpha版本，那么本项目可能就是黄了，那就只能说声抱歉了，请在项目发布后再 star。
 
+
+进度
+--------------------------------------------
+
+项目进度以及任务认领请访问：[**这里**]( https://github.com/iteatimeteam/tap_water/projects ).
+
+Demo update
+--------------------------------------------
+
+时间 | 演示 | 介绍
+:-------------:|:-------------:|:-------------:
+2019, July, 18 16:39:55 | ![](http://ww2.sinaimg.cn/large/006tNc79gy1g544k1fcdjg30b20kzn2q.gif) | [**issue#11 TabBar基础版本，不带加号按钮 **]( https://github.com/iteatimeteam/tap_water/issues/11 ) 
+
+
