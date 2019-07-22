@@ -25,3 +25,22 @@ deadline
 
 如果 2019年10月24日还未看到发布alpha版本，那么本项目可能就是黄了，那就只能说声抱歉了，请在项目发布后再 star。
 
+
+进度
+--------------------------------------------
+
+项目进度以及任务认领：
+
+人员 | 地址
+:-------------:|:-------------:
+ iTeaTime(技术清谈)团队内成员 |  [**GitHub team  Discussions**](https://github.com/orgs/iteatimeteam/teams/iteatime) 
+ 团队外成员 |  [GitHub Projects 详情]( https://github.com/iteatimeteam/tap_water/projects ).
+
+
+updated
+--------------------------------------------
+
+ 演示 |  主要代码贡献方及介绍
+:-------------:|:-------------:
+| ![](http://ww2.sinaimg.cn/large/006tNc79gy1g544k1fcdjg30b20kzn2q.gif) |  ![https://github.com/ChenYilong](https://avatars1.githubusercontent.com/u/13093607?s=400&v=4) </p>[**@DargonLee**]( https://github.com/DargonLee ) </p>[issue#11 TabBar基础版本，不带加号按钮]( https://github.com/iteatimeteam/tap_water/issues/11 ) 
+
