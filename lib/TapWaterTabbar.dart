@@ -24,6 +24,9 @@ class NavigationIconView {
 }
 
 class TapWaterTabbar extends StatefulWidget {
+  final bool hasButton;
+  TapWaterTabbar({Key key, this.hasButton = false}) : super(key: key);
+  
   @override
   _TapWaterTabbarState createState() => _TapWaterTabbarState();
 }
@@ -186,7 +189,7 @@ return MaterialApp(
       bottomNavigationBar: botNavbar,
 
     ),
-        Align(
+        widget.hasButton ? Align(
           child: Padding(
             padding: const EdgeInsets.only(bottom:50.0),
             child: FloatingActionButton(
@@ -195,7 +198,7 @@ return MaterialApp(
             ),
           ),
           alignment: Alignment.bottomCenter,
-        ),
+        ) : Text(''),
   ],
     )
   )
