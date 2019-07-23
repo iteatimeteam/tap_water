@@ -27,8 +27,20 @@ class NavigationIconView {
 
 class TapWaterTabbar extends StatefulWidget {
   final bool isButton;
-  TapWaterTabbar({Key key, this.isButton = false}) : super(key: key);
-  
+  final List<Map<String, dynamic>> btmNavbar;
+  TapWaterTabbar({this.btmNavbar, this.isButton = false}) {
+    final int _len = this.btmNavbar.length;
+    // final int _len = 5;
+    if (this.isButton) {
+      if (_len % 2 == 0) {
+        this.btmNavbar.insert(_len ~/ 2, null);
+      } else {
+        this.btmNavbar.insert(_len ~/ 2 + 1, null);
+        this.btmNavbar.insert(_len ~/ 2 + 2, null);
+      }
+    }
+  }
+
   @override
   _TapWaterTabbarState createState() => _TapWaterTabbarState();
 }
@@ -45,10 +57,20 @@ class _TapWaterTabbarState extends State<TapWaterTabbar> {
   void initState() {
     super.initState();
     _navgationViews = [
-      NavigationIconView(title: '微信', icon: Icon(Icons.ac_unit), avtiveIcon: Icon(Icons.backspace)),
-      NavigationIconView(title: '通讯录', icon: Icon(Icons.backup), avtiveIcon: Icon(Icons.cached)),
-      NavigationIconView(title: '', icon: Icon(Icons.publish), avtiveIcon: Icon(Icons.public)),
-      NavigationIconView(title: '发现', icon: Icon(Icons.dashboard), avtiveIcon: Icon(Icons.edit)),
+      NavigationIconView(
+          title: '微信',
+          icon: Icon(Icons.ac_unit),
+          avtiveIcon: Icon(Icons.backspace)),
+      NavigationIconView(
+          title: '通讯录',
+          icon: Icon(Icons.backup),
+          avtiveIcon: Icon(Icons.cached)),
+      NavigationIconView(
+          title: '', icon: Icon(Icons.publish), avtiveIcon: Icon(Icons.public)),
+      NavigationIconView(
+          title: '发现',
+          icon: Icon(Icons.dashboard),
+          avtiveIcon: Icon(Icons.edit)),
       NavigationIconView(
         title: '我的',
         icon: Icon(Icons.memory),
@@ -87,7 +109,9 @@ class _TapWaterTabbarState extends State<TapWaterTabbar> {
   Widget build(BuildContext context) {
     final botNavbar = new BottomNavigationBar(
       fixedColor: Colors.green,
-      items: _navgationViews.map((NavigationIconView navigationView) => navigationView.item).toList(),
+      items: _navgationViews
+          .map((NavigationIconView navigationView) => navigationView.item)
+          .toList(),
       currentIndex: _currentIndex,
       type: BottomNavigationBarType.fixed,
       onTap: onTap,
@@ -172,7 +196,8 @@ class _TapWaterTabbarState extends State<TapWaterTabbar> {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: WaterTabBar(isButton: widget.isButton),
+            child: WaterTabBar(
+                isButton: widget.isButton, btmNavbar: widget.btmNavbar),
           ),
 //          Align(
 //            child: Padding(

@@ -13,7 +13,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: TapWaterTabbar(isButton: true),
+      home: TapWaterTabbar(isButton: true, btmNavbar: [
+              {'title': '微信', 'icon': Icon(Icons.ac_unit)},
+              {'title': '微信', 'icon': Icon(Icons.ac_unit)},
+              {'title': '微信', 'icon': Icon(Icons.ac_unit)},
+              {'title': '微信', 'icon': Icon(Icons.ac_unit)}
+            ]),
     );
   }
 }
