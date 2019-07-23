@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tap_water_tab_bar/tap_water_tab_bar.dart';
+
 import 'firstvc.dart';
 
 //enum ActionsItems {
@@ -40,28 +42,15 @@ class _TapWaterTabbarState extends State<TapWaterTabbar> {
   void initState() {
     super.initState();
     _navgationViews = [
-      NavigationIconView(
-          title: '微信',
-          icon: Icon(Icons.ac_unit),
-          avtiveIcon: Icon(Icons.backspace)),
-      NavigationIconView(
-          title: '通讯录',
-          icon: Icon(Icons.backup),
-          avtiveIcon: Icon(Icons.cached)),
-      NavigationIconView(
-          title: '',
-          icon: Icon(Icons.publish),
-          avtiveIcon: Icon(Icons.public)),
-      NavigationIconView(
-          title: '发现',
-          icon: Icon(Icons.dashboard),
-          avtiveIcon: Icon(Icons.edit)),
+      NavigationIconView(title: '微信', icon: Icon(Icons.ac_unit), avtiveIcon: Icon(Icons.backspace)),
+      NavigationIconView(title: '通讯录', icon: Icon(Icons.backup), avtiveIcon: Icon(Icons.cached)),
+      NavigationIconView(title: '', icon: Icon(Icons.publish), avtiveIcon: Icon(Icons.public)),
+      NavigationIconView(title: '发现', icon: Icon(Icons.dashboard), avtiveIcon: Icon(Icons.edit)),
       NavigationIconView(
         title: '我的',
         icon: Icon(Icons.memory),
         avtiveIcon: Icon(Icons.drive_eta),
       )
-
     ];
 
     _pageController = PageController(initialPage: _currentIndex);
@@ -93,24 +82,14 @@ class _TapWaterTabbarState extends State<TapWaterTabbar> {
 
   @override
   Widget build(BuildContext context) {
-
-
-
     final botNavbar = new BottomNavigationBar(
       fixedColor: Colors.green,
-      items: _navgationViews
-          .map((NavigationIconView navigationView) => navigationView.item)
-          .toList(),
+      items: _navgationViews.map((NavigationIconView navigationView) => navigationView.item).toList(),
       currentIndex: _currentIndex,
       type: BottomNavigationBarType.fixed,
       onTap: onTap,
     );
-return MaterialApp(
-  theme: ThemeData(primaryColor: Colors.blue),
-  home: Scaffold(
-    body: Stack(
-      children: <Widget>[
-    Scaffold(
+    return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
         title: Text('微信'),
@@ -171,43 +150,48 @@ return MaterialApp(
           Container(width: 5.0)
         ],
       ),
-      body: PageView.builder(
-        itemBuilder: (BuildContext context, int index) {
-          return _pages[index];
-        },
-        controller: _pageController,
-        itemCount: _pages.length,
-        onPageChanged: (int index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-      ),
-      bottomNavigationBar: botNavbar,
-
-    ),
-        Align(
-          child: Padding(
-            padding: const EdgeInsets.only(bottom:50.0),
-            child: FloatingActionButton(
-              child: new Image.asset(bigImg),
-              onPressed: onBigImgTap,
+      body: Stack(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(bottom: 50),
+            child: PageView.builder(
+              itemBuilder: (BuildContext context, int index) {
+                return _pages[index];
+              },
+              controller: _pageController,
+              itemCount: _pages.length,
+              onPageChanged: (int index) {
+                setState(() {
+                  _currentIndex = index;
+                });
+              },
             ),
           ),
-          alignment: Alignment.bottomCenter,
-        ),
-  ],
-    )
-  )
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: WaterTabBar(),
+          ),
+//          Align(
+//            child: Padding(
+//              padding: const EdgeInsets.only(bottom: 50.0),
+//              child: FloatingActionButton(
+//                child: new Image.asset(bigImg),
+//                onPressed: onBigImgTap,
+//              ),
+//            ),
+//            alignment: Alignment.bottomCenter,
+//          ),
+        ],
+      ),
     );
-
   }
+
   void onTap(int index) {
     if (index != 2) {
       setState(() {
         this.bigImg = 'images/post_normal.png';
       });
-    }else{
+    } else {
       setState(() {
         this.bigImg = 'images/post_highlight.png';
       });
@@ -230,5 +214,4 @@ return MaterialApp(
       this.page = page;
     });
   }
-
 }
