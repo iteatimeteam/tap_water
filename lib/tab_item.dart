@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 class TabItem extends StatefulWidget {
   final String title;
-  final Icon icon;
+  final IconData icon;
   final double width;
   final Function onTabClick;
   final int index;
-  final Icon activeIcon;
-  final bool isActive;
+  final IconData activeIcon;
+  final bool isSelected;
+  final Color selectedColor;
+  final Color normalColor;
   TabItem(
       {this.title,
       this.icon,
@@ -15,7 +17,9 @@ class TabItem extends StatefulWidget {
       this.onTabClick,
       this.index,
       this.activeIcon,
-      this.isActive});
+      this.isSelected,
+      this.normalColor = Colors.grey,
+      this.selectedColor = Colors.blue});
   @override
   State<StatefulWidget> createState() => _TabItem();
 }
@@ -23,6 +27,7 @@ class TabItem extends StatefulWidget {
 class _TabItem extends State<TabItem> {
   @override
   Widget build(BuildContext context) {
+    // final _themeColor = widget.isSelected ? widget.selectedColor : widget.normalColor;
     return Expanded(
       child: GestureDetector(
           onTap: _onTab,
@@ -36,11 +41,12 @@ class _TabItem extends State<TabItem> {
                     ? Container(
                         child: Padding(
                           padding: const EdgeInsets.only(top: 5),
-                          child: IconButton(
-                              icon: widget.isActive
-                                  ? widget.activeIcon
-                                  : widget.icon,
-                              onPressed: null),
+                          child: Icon(
+                            widget.isSelected ? widget.activeIcon : widget.icon,
+                            color: widget.isSelected
+                                ? widget.selectedColor
+                                : widget.normalColor,
+                          ),
                         ),
                       )
                     : Container(
@@ -57,9 +63,9 @@ class _TabItem extends State<TabItem> {
                           ? Text(
                               widget.title,
                               style: TextStyle(
-                                  color: widget.isActive
-                                      ? Colors.green
-                                      : Colors.grey,
+                                  color: widget.isSelected
+                                      ? widget.selectedColor
+                                      : widget.normalColor,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 10),
                             )

@@ -8,8 +8,11 @@ class WaterTabBar extends StatefulWidget {
   int len = 0;
   WaterTabBar({Key key, this.btmNavbar, this.isButton = false, this.onTabClick})
       : super(key: key) {
+    // 解决点击页面问题
     this.btmNavbar.asMap().map((i, v) => MapEntry(i, v['index'] = i));
     this.len = this.btmNavbar.length;
+
+    /// 解决基数问题
     if (this.isButton) {
       if (len % 2 == 0) {
         this.btmNavbar.insert(len ~/ 2, null);
@@ -61,8 +64,9 @@ class _WaterTabBarState extends State<WaterTabBar> {
                                     title: v['title'],
                                     icon: v['icon'],
                                     activeIcon: v['avtiveIcon'],
-                                    isActive: v['index'] == _activeIndex,
+                                    isSelected: v['index'] == _activeIndex,
                                     index: v['index'],
+                                    selectedColor: v['selectedColor'],
                                     onTabClick: _onTabClick)
                                 : (widget.isButton ? TabItem() : Text(''))))
                         .values
@@ -82,17 +86,6 @@ class _WaterTabBarState extends State<WaterTabBar> {
                         )
                       : Text(''),
                 ),
-                // IgnorePointer(
-                //   child: Container(
-                //     decoration: const BoxDecoration(color: Colors.transparent),
-                //     child: Align(
-                //       heightFactor: 1,
-                //       child: OverflowBox(
-                //           //  child: ,
-                //           ),
-                //     ),
-                //   ),
-                // )
               ],
             )),
       ],

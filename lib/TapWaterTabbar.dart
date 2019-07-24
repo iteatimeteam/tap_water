@@ -1,4 +1,7 @@
+/** 该页面以废弃 */
+
 import 'package:flutter/material.dart';
+import 'package:tap_water_tab_bar/tab_item.dart';
 import 'package:tap_water_tab_bar/tap_water_tab_bar.dart';
 
 import 'firstvc.dart';
@@ -27,19 +30,18 @@ class NavigationIconView {
 
 class TapWaterTabbar extends StatefulWidget {
   final bool isButton;
-  final List<Map<String, dynamic>> btmNavbar;
-  final Function onTabClick;
-  TapWaterTabbar({this.btmNavbar, this.isButton = false, this.onTabClick}) {
-    final int _len = this.btmNavbar.length;
-    // final int _len = 5;
-    if (this.isButton) {
-      if (_len % 2 == 0) {
-        this.btmNavbar.insert(_len ~/ 2, null);
-      } else {
-        this.btmNavbar.insert(_len ~/ 2 + 1, null);
-        this.btmNavbar.insert(_len ~/ 2 + 2, null);
-      }
-    }
+  final List<TabItem> tabItems;
+  TapWaterTabbar({this.tabItems, this.isButton = false}) {
+//    final int _len = this.btmNavbar.length;
+//    // final int _len = 5;
+//    if (this.isButton) {
+//      if (_len % 2 == 0) {
+//        this.btmNavbar.insert(_len ~/ 2, null);
+//      } else {
+//        this.btmNavbar.insert(_len ~/ 2 + 1, null);
+//        this.btmNavbar.insert(_len ~/ 2 + 2, null);
+//      }
+//    }
   }
 
   @override
@@ -57,27 +59,6 @@ class _TapWaterTabbarState extends State<TapWaterTabbar> {
   @override
   void initState() {
     super.initState();
-    _navgationViews = [
-      NavigationIconView(
-          title: '微信',
-          icon: Icon(Icons.ac_unit),
-          avtiveIcon: Icon(Icons.backspace)),
-      NavigationIconView(
-          title: '通讯录',
-          icon: Icon(Icons.backup),
-          avtiveIcon: Icon(Icons.cached)),
-      NavigationIconView(
-          title: '', icon: Icon(Icons.publish), avtiveIcon: Icon(Icons.public)),
-      NavigationIconView(
-          title: '发现',
-          icon: Icon(Icons.dashboard),
-          avtiveIcon: Icon(Icons.edit)),
-      NavigationIconView(
-        title: '我的',
-        icon: Icon(Icons.memory),
-        avtiveIcon: Icon(Icons.drive_eta),
-      )
-    ];
 
     _pageController = PageController(initialPage: _currentIndex);
     _pages = [
@@ -89,28 +70,116 @@ class _TapWaterTabbarState extends State<TapWaterTabbar> {
     ];
   }
 
-  
+  _buildPopupMenuItem(Widget icon, String title) {
+    return Row(
+      children: <Widget>[
+        icon,
+        Container(
+          width: 20,
+        ),
+        Text(
+          title,
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        )
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    final botNavbar = new BottomNavigationBar(
-      fixedColor: Colors.green,
-      items: _navgationViews
-          .map((NavigationIconView navigationView) => navigationView.item)
-          .toList(),
-      currentIndex: _currentIndex,
-      type: BottomNavigationBarType.fixed,
-      onTap: onTap,
-    );
-    return Stack(
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0.0,
+        title: Text('微信'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              print('xxx');
+            },
+          ),
+          Container(width: 5.0),
+          PopupMenuButton(
+            icon: Icon(Icons.add),
+            itemBuilder: (BuildContext context) {
+              return <PopupMenuItem<String>>[
+                PopupMenuItem(
+                  child: _buildPopupMenuItem(
+                      Icon(
+                        Icons.search,
+                        color: Colors.white,
+                      ),
+                      "发起群聊"),
+                  value: "group_chat",
+                ),
+                PopupMenuItem(
+                  child: _buildPopupMenuItem(
+                      Icon(
+                        Icons.add_circle,
+                        color: Colors.white,
+                      ),
+                      "添加朋友"),
+                  value: "add_friend",
+                ),
+                PopupMenuItem(
+                  child: _buildPopupMenuItem(
+                      Icon(
+                        Icons.scanner,
+                        color: Colors.white,
+                      ),
+                      "扫一扫"),
+                  value: "scan",
+                ),
+                PopupMenuItem(
+                  child: _buildPopupMenuItem(
+                      Icon(
+                        Icons.payment,
+                        color: Colors.white,
+                      ),
+                      "收付款"),
+                  value: "pay",
+                ),
+              ];
+            },
+            onSelected: (String selected) {
+              print('点击了$selected');
+            },
+          ),
+          Container(width: 5.0)
+        ],
+      ),
+      body: Stack(
         children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(bottom: 50),
+            child: PageView.builder(
+              itemBuilder: (BuildContext context, int index) {
+                return _pages[index];
+              },
+              controller: _pageController,
+              itemCount: _pages.length,
+              onPageChanged: (int index) {
+                setState(() {
+                  _currentIndex = index;
+                });
+              },
+            ),
+          ),
           Align(
             alignment: Alignment.bottomCenter,
             child: WaterTabBar(
-                isButton: widget.isButton, btmNavbar: widget.btmNavbar),
+              isButton: widget.isButton,
+              tabItemInfos: widget.tabItems,
+              selectedCallback: (int index) {
+                print(index);
+              },
+            ),
           ),
         ],
-      );
+      ),
+    );
   }
 
   void onTap(int index) {

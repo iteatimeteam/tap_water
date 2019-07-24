@@ -30,24 +30,24 @@ class _MyAppPageState extends State<_MyAppPage> {
   int _index = 0;
   var _pages = [
     Align(
-      alignment: Alignment.topLeft,
-      child: Text('1'),
+      alignment: Alignment.center,
+      child: Text('页面1'),
     ),
     Align(
-      alignment: Alignment.topLeft,
-      child: Text('2'),
+      alignment: Alignment.center,
+      child: Text('页面2'),
     ),
     Align(
-      alignment: Alignment.topLeft,
-      child: Text('3'),
+      alignment: Alignment.center,
+      child: Text('页面3'),
     ),
     Align(
-      alignment: Alignment.topLeft,
-      child: Text('4'),
+      alignment: Alignment.center,
+      child: Text('页面4'),
     ),
     Align(
-      alignment: Alignment.topLeft,
-      child: Text('5'),
+      alignment: Alignment.center,
+      child: Text('页面5'),
     ),
   ];
   @override
@@ -62,23 +62,27 @@ class _MyAppPageState extends State<_MyAppPage> {
                 btmNavbar: [
                   {
                     'title': '微信1',
-                    'icon': Icon(Icons.ac_unit),
-                    'avtiveIcon': Icon(Icons.backspace, color: Colors.green)
+                    'icon': Icons.ac_unit,
+                    'avtiveIcon': Icons.backspace,
+                    'selectedColor': Colors.green
                   },
                   {
                     'title': '微信2',
-                    'icon': Icon(Icons.ac_unit),
-                    'avtiveIcon': Icon(Icons.cached, color: Colors.green)
+                    'icon': Icons.ac_unit,
+                    'avtiveIcon': Icons.cached,
+                    'selectedColor': Colors.green
                   },
                   {
                     'title': '微信3',
-                    'icon': Icon(Icons.ac_unit),
-                    'avtiveIcon': Icon(Icons.edit, color: Colors.green)
+                    'icon': Icons.ac_unit,
+                    'avtiveIcon': Icons.edit,
+                    'selectedColor': Colors.green
                   },
                    {
                     'title': '微信4',
-                    'icon': Icon(Icons.ac_unit),
-                    'avtiveIcon': Icon(Icons.cached, color: Colors.green)
+                    'icon': Icons.ac_unit,
+                    'avtiveIcon': Icons.cached,
+                    'selectedColor': Colors.green
                   },
                 ],
                 onTabClick: onTabClick),
