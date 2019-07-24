@@ -4,7 +4,18 @@ class TabItem extends StatefulWidget {
   final String title;
   final Icon icon;
   final double width;
-  TabItem({this.title, this.icon, this.width});
+  final Function onTabClick;
+  final int index;
+  final Icon activeIcon;
+  final bool isActive;
+  TabItem(
+      {this.title,
+      this.icon,
+      this.width,
+      this.onTabClick,
+      this.index,
+      this.activeIcon,
+      this.isActive});
   @override
   State<StatefulWidget> createState() => _TabItem();
 }
@@ -13,10 +24,9 @@ class _TabItem extends State<TabItem> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          Column(
+      child: GestureDetector(
+          onTap: _onTab,
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.min,
@@ -26,7 +36,11 @@ class _TabItem extends State<TabItem> {
                     ? Container(
                         child: Padding(
                           padding: const EdgeInsets.only(top: 5),
-                          child: IconButton(icon: widget.icon, color: Color(0xFF8c77ec), onPressed: null),
+                          child: IconButton(
+                              icon: widget.isActive
+                                  ? widget.activeIcon
+                                  : widget.icon,
+                              onPressed: null),
                         ),
                       )
                     : Container(
@@ -42,7 +56,12 @@ class _TabItem extends State<TabItem> {
                       child: widget.title != null
                           ? Text(
                               widget.title,
-                              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 10),
+                              style: TextStyle(
+                                  color: widget.isActive
+                                      ? Colors.green
+                                      : Colors.grey,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 10),
                             )
                           : Container(),
                     ),
@@ -50,9 +69,12 @@ class _TabItem extends State<TabItem> {
                 ),
               )
             ],
-          )
-        ],
-      ),
+          )),
     );
+  }
+
+  void _onTab() {
+    widget
+        .onTabClick({'icon': widget.icon, 'title': widget.title}, widget.index);
   }
 }

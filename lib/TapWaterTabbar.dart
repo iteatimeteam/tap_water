@@ -28,7 +28,8 @@ class NavigationIconView {
 class TapWaterTabbar extends StatefulWidget {
   final bool isButton;
   final List<Map<String, dynamic>> btmNavbar;
-  TapWaterTabbar({this.btmNavbar, this.isButton = false}) {
+  final Function onTabClick;
+  TapWaterTabbar({this.btmNavbar, this.isButton = false, this.onTabClick}) {
     final int _len = this.btmNavbar.length;
     // final int _len = 5;
     if (this.isButton) {
@@ -88,22 +89,7 @@ class _TapWaterTabbarState extends State<TapWaterTabbar> {
     ];
   }
 
-  _buildPopupMenuItem(Widget icon, String title) {
-    return Row(
-      children: <Widget>[
-        icon,
-        Container(
-          width: 20,
-        ),
-        Text(
-          title,
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        )
-      ],
-    );
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -116,102 +102,15 @@ class _TapWaterTabbarState extends State<TapWaterTabbar> {
       type: BottomNavigationBarType.fixed,
       onTap: onTap,
     );
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0.0,
-        title: Text('微信'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-              print('xxx');
-            },
-          ),
-          Container(width: 5.0),
-          PopupMenuButton(
-            icon: Icon(Icons.add),
-            itemBuilder: (BuildContext context) {
-              return <PopupMenuItem<String>>[
-                PopupMenuItem(
-                  child: _buildPopupMenuItem(
-                      Icon(
-                        Icons.search,
-                        color: Colors.white,
-                      ),
-                      "发起群聊"),
-                  value: "group_chat",
-                ),
-                PopupMenuItem(
-                  child: _buildPopupMenuItem(
-                      Icon(
-                        Icons.add_circle,
-                        color: Colors.white,
-                      ),
-                      "添加朋友"),
-                  value: "add_friend",
-                ),
-                PopupMenuItem(
-                  child: _buildPopupMenuItem(
-                      Icon(
-                        Icons.scanner,
-                        color: Colors.white,
-                      ),
-                      "扫一扫"),
-                  value: "scan",
-                ),
-                PopupMenuItem(
-                  child: _buildPopupMenuItem(
-                      Icon(
-                        Icons.payment,
-                        color: Colors.white,
-                      ),
-                      "收付款"),
-                  value: "pay",
-                ),
-              ];
-            },
-            onSelected: (String selected) {
-              print('点击了$selected');
-            },
-          ),
-          Container(width: 5.0)
-        ],
-      ),
-      body: Stack(
+    return Stack(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(bottom: 50),
-            child: PageView.builder(
-              itemBuilder: (BuildContext context, int index) {
-                return _pages[index];
-              },
-              controller: _pageController,
-              itemCount: _pages.length,
-              onPageChanged: (int index) {
-                setState(() {
-                  _currentIndex = index;
-                });
-              },
-            ),
-          ),
           Align(
             alignment: Alignment.bottomCenter,
             child: WaterTabBar(
                 isButton: widget.isButton, btmNavbar: widget.btmNavbar),
           ),
-//          Align(
-//            child: Padding(
-//              padding: const EdgeInsets.only(bottom: 50.0),
-//              child: FloatingActionButton(
-//                child: new Image.asset(bigImg),
-//                onPressed: onBigImgTap,
-//              ),
-//            ),
-//            alignment: Alignment.bottomCenter,
-//          ),
         ],
-      ),
-    );
+      );
   }
 
   void onTap(int index) {
