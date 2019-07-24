@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tap_water_tab_bar/tab_item.dart';
 import 'package:tap_water_tab_bar/tap_water_tab_bar.dart';
 
 import 'firstvc.dart';
@@ -27,18 +28,18 @@ class NavigationIconView {
 
 class TapWaterTabbar extends StatefulWidget {
   final bool isButton;
-  final List<Map<String, dynamic>> btmNavbar;
-  TapWaterTabbar({this.btmNavbar, this.isButton = false}) {
-    final int _len = this.btmNavbar.length;
-    // final int _len = 5;
-    if (this.isButton) {
-      if (_len % 2 == 0) {
-        this.btmNavbar.insert(_len ~/ 2, null);
-      } else {
-        this.btmNavbar.insert(_len ~/ 2 + 1, null);
-        this.btmNavbar.insert(_len ~/ 2 + 2, null);
-      }
-    }
+  final List<TabItemInfo> tabItems;
+  TapWaterTabbar({this.tabItems, this.isButton = false}) {
+//    final int _len = this.btmNavbar.length;
+//    // final int _len = 5;
+//    if (this.isButton) {
+//      if (_len % 2 == 0) {
+//        this.btmNavbar.insert(_len ~/ 2, null);
+//      } else {
+//        this.btmNavbar.insert(_len ~/ 2 + 1, null);
+//        this.btmNavbar.insert(_len ~/ 2 + 2, null);
+//      }
+//    }
   }
 
   @override
@@ -56,27 +57,6 @@ class _TapWaterTabbarState extends State<TapWaterTabbar> {
   @override
   void initState() {
     super.initState();
-    _navgationViews = [
-      NavigationIconView(
-          title: '微信',
-          icon: Icon(Icons.ac_unit),
-          avtiveIcon: Icon(Icons.backspace)),
-      NavigationIconView(
-          title: '通讯录',
-          icon: Icon(Icons.backup),
-          avtiveIcon: Icon(Icons.cached)),
-      NavigationIconView(
-          title: '', icon: Icon(Icons.publish), avtiveIcon: Icon(Icons.public)),
-      NavigationIconView(
-          title: '发现',
-          icon: Icon(Icons.dashboard),
-          avtiveIcon: Icon(Icons.edit)),
-      NavigationIconView(
-        title: '我的',
-        icon: Icon(Icons.memory),
-        avtiveIcon: Icon(Icons.drive_eta),
-      )
-    ];
 
     _pageController = PageController(initialPage: _currentIndex);
     _pages = [
@@ -107,15 +87,6 @@ class _TapWaterTabbarState extends State<TapWaterTabbar> {
 
   @override
   Widget build(BuildContext context) {
-    final botNavbar = new BottomNavigationBar(
-      fixedColor: Colors.green,
-      items: _navgationViews
-          .map((NavigationIconView navigationView) => navigationView.item)
-          .toList(),
-      currentIndex: _currentIndex,
-      type: BottomNavigationBarType.fixed,
-      onTap: onTap,
-    );
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
@@ -197,18 +168,13 @@ class _TapWaterTabbarState extends State<TapWaterTabbar> {
           Align(
             alignment: Alignment.bottomCenter,
             child: WaterTabBar(
-                isButton: widget.isButton, btmNavbar: widget.btmNavbar),
+              isButton: widget.isButton,
+              tabItemInfos: widget.tabItems,
+              selectedCallback: (int index) {
+                print(index);
+              },
+            ),
           ),
-//          Align(
-//            child: Padding(
-//              padding: const EdgeInsets.only(bottom: 50.0),
-//              child: FloatingActionButton(
-//                child: new Image.asset(bigImg),
-//                onPressed: onBigImgTap,
-//              ),
-//            ),
-//            alignment: Alignment.bottomCenter,
-//          ),
         ],
       ),
     );
