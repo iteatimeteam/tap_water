@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'widget/navigation_bar.dart';
 // import 'TapWaterTabbar.dart';
 import 'tap_water_tab_bar.dart';
+import './tab_item.dart';
 
 void main() => runApp(MyApp());
 
@@ -60,30 +61,26 @@ class _MyAppPageState extends State<_MyAppPage> {
             WaterTabBar(
                 isButton: true,
                 btmNavbar: [
-                  {
-                    'title': '微信1',
-                    'icon': Icons.ac_unit,
-                    'avtiveIcon': Icons.backspace,
-                    'selectedColor': Colors.green
-                  },
-                  {
-                    'title': '微信2',
-                    'icon': Icons.ac_unit,
-                    'avtiveIcon': Icons.cached,
-                    'selectedColor': Colors.green
-                  },
-                  {
-                    'title': '微信3',
-                    'icon': Icons.ac_unit,
-                    'avtiveIcon': Icons.edit,
-                    'selectedColor': Colors.green
-                  },
-                   {
-                    'title': '微信4',
-                    'icon': Icons.ac_unit,
-                    'avtiveIcon': Icons.cached,
-                    'selectedColor': Colors.green
-                  },
+                  TabItemInfo(
+                      title: '微信1',
+                      icon: Icons.ac_unit,
+                      activeIcon: Icons.backspace,
+                      selectedColor: Colors.green),
+                  TabItemInfo(
+                      title: '微信2',
+                      icon: Icons.ac_unit,
+                      activeIcon: Icons.cached,
+                      selectedColor: Colors.green),
+                  TabItemInfo(
+                      title: '微信3',
+                      icon: Icons.ac_unit,
+                      activeIcon: Icons.edit,
+                      selectedColor: Colors.green),
+                  TabItemInfo(
+                      title: '微信4',
+                      icon: Icons.ac_unit,
+                      activeIcon: Icons.cached,
+                      selectedColor: Colors.green),
                 ],
                 onTabClick: onTabClick),
           ],

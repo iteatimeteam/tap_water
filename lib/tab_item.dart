@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart';
 
+class TabItemInfo {
+  final String title;
+  final IconData icon;
+  final IconData activeIcon;
+  final Color normalColor;
+  int index;
+  final Color selectedColor;
+  TabItemInfo({this.title, this.index, this.icon, this.activeIcon, this.normalColor, this.selectedColor});
+}
+
 class TabItem extends StatefulWidget {
   final String title;
   final IconData icon;

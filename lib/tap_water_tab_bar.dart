@@ -3,13 +3,13 @@ import 'package:tap_water_tab_bar/tab_item.dart';
 
 class WaterTabBar extends StatefulWidget {
   final bool isButton;
-  List<Map<String, dynamic>> btmNavbar = [];
+  List<TabItemInfo> btmNavbar = [];
   final Function onTabClick;
   int len = 0;
   WaterTabBar({Key key, this.btmNavbar, this.isButton = false, this.onTabClick})
       : super(key: key) {
     // 解决点击页面问题
-    this.btmNavbar.asMap().map((i, v) => MapEntry(i, v['index'] = i));
+    this.btmNavbar.asMap().map((i, v) => MapEntry(i, v.index = i));
     this.len = this.btmNavbar.length;
 
     /// 解决基数问题
@@ -61,12 +61,12 @@ class _WaterTabBarState extends State<WaterTabBar> {
                             i,
                             v != null
                                 ? TabItem(
-                                    title: v['title'],
-                                    icon: v['icon'],
-                                    activeIcon: v['avtiveIcon'],
-                                    isSelected: v['index'] == _activeIndex,
-                                    index: v['index'],
-                                    selectedColor: v['selectedColor'],
+                                    title: v.title,
+                                    icon: v.icon,
+                                    activeIcon: v.activeIcon,
+                                    isSelected: v.index == _activeIndex,
+                                    index: v.index,
+                                    selectedColor: v.selectedColor,
                                     onTabClick: _onTabClick)
                                 : (widget.isButton ? TabItem() : Text(''))))
                         .values
