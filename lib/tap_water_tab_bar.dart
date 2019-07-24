@@ -9,10 +9,10 @@ class WaterTabBar extends StatefulWidget {
   WaterTabBar({Key key, this.btmNavbar, this.isButton = false, this.onTabClick})
       : super(key: key) {
     // 解决点击页面问题
-    this.btmNavbar.asMap().map((i, v) => MapEntry(i, v.index = i));
+    this.btmNavbar.asMap().map((int i, TabItemInfo v) => MapEntry(i, v.index = i));
     this.len = this.btmNavbar.length;
 
-    /// 解决基数问题
+    /// 解决tab为基数问题
     if (this.isButton) {
       if (len % 2 == 0) {
         this.btmNavbar.insert(len ~/ 2, null);
@@ -57,16 +57,12 @@ class _WaterTabBarState extends State<WaterTabBar> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: widget.btmNavbar
                         .asMap()
-                        .map((i, v) => MapEntry(
+                        .map((int i, TabItemInfo v) => MapEntry(
                             i,
                             v != null
                                 ? TabItem(
-                                    title: v.title,
-                                    icon: v.icon,
-                                    activeIcon: v.activeIcon,
+                                    itemInfo: v,
                                     isSelected: v.index == _activeIndex,
-                                    index: v.index,
-                                    selectedColor: v.selectedColor,
                                     onTabClick: _onTabClick)
                                 : (widget.isButton ? TabItem() : Text(''))))
                         .values
@@ -92,7 +88,7 @@ class _WaterTabBarState extends State<WaterTabBar> {
     );
   }
 
-  void _onTabClick(node, i) {
+  void _onTabClick(TabItemInfo node, int i) {
     print(i);
     setState(() {
       _activeIndex = i;

@@ -7,29 +7,60 @@ class TabItemInfo {
   final Color normalColor;
   int index;
   final Color selectedColor;
-  TabItemInfo({this.title, this.index, this.icon, this.activeIcon, this.normalColor, this.selectedColor});
+  TabItemInfo(
+      {this.title,
+      this.index,
+      this.icon,
+      this.activeIcon,
+      this.normalColor = Colors.grey,
+      this.selectedColor = Colors.blue});
 }
 
 class TabItem extends StatefulWidget {
-  final String title;
-  final IconData icon;
-  final double width;
+  final TabItemInfo itemInfo;
+  String get title {
+    if (itemInfo != null) {
+      return itemInfo.title;
+    }
+  }
+
+  IconData get icon {
+    if (itemInfo != null) {
+      return itemInfo.icon;
+    }
+  }
+
+  IconData get activeIcon {
+    if (itemInfo != null) {
+      return itemInfo.activeIcon;
+    }
+  }
+
+  Color get selectedColor {
+    if (itemInfo != null) {
+      return itemInfo.selectedColor;
+    }
+  }
+
+  Color get normalColor {
+    if (itemInfo != null) {
+      return itemInfo.normalColor;
+    }
+  }
+
+  int get index {
+    if (itemInfo != null) {
+      return itemInfo.index;
+    }
+  }
+
   final Function onTabClick;
-  final int index;
-  final IconData activeIcon;
   final bool isSelected;
-  final Color selectedColor;
-  final Color normalColor;
-  TabItem(
-      {this.title,
-      this.icon,
-      this.width,
-      this.onTabClick,
-      this.index,
-      this.activeIcon,
-      this.isSelected,
-      this.normalColor = Colors.grey,
-      this.selectedColor = Colors.blue});
+  TabItem({
+    this.itemInfo,
+    this.onTabClick,
+    this.isSelected,
+  });
   @override
   State<StatefulWidget> createState() => _TabItem();
 }
@@ -59,9 +90,7 @@ class _TabItem extends State<TabItem> {
                           ),
                         ),
                       )
-                    : Container(
-                        width: widget.width,
-                      ),
+                    : Container(),
               ),
               Flexible(
                 child: Container(
@@ -90,7 +119,6 @@ class _TabItem extends State<TabItem> {
   }
 
   void _onTab() {
-    widget
-        .onTabClick({'icon': widget.icon, 'title': widget.title}, widget.index);
+    widget.onTabClick(widget.itemInfo, widget.index);
   }
 }

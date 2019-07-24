@@ -87,7 +87,7 @@ class _MyAppPageState extends State<_MyAppPage> {
         ));
   }
 
-  void onTabClick(node, i) {
+  void onTabClick(TabItemInfo node, int i) {
     setState(() {
       _index = i;
     });
