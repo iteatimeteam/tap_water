@@ -119,6 +119,6 @@ class _TabItem extends State<TabItem> {
   }
 
   void _onTab() {
-    widget.onTabClick(widget.itemInfo, widget.index);
+    widget.onTabClick(widget.itemInfo);
   }
 }

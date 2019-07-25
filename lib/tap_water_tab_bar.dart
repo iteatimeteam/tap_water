@@ -9,7 +9,10 @@ class WaterTabBar extends StatefulWidget {
   WaterTabBar({Key key, this.btmNavbar, this.isButton = false, this.onTabClick})
       : super(key: key) {
     // 解决点击页面问题
-    this.btmNavbar.asMap().map((int i, TabItemInfo v) => MapEntry(i, v.index = i));
+    this
+        .btmNavbar
+        .asMap()
+        .map((int i, TabItemInfo v) => MapEntry(i, v.index = i));
     this.len = this.btmNavbar.length;
 
     /// 解决tab为基数问题
@@ -72,11 +75,12 @@ class _WaterTabBarState extends State<WaterTabBar> {
                 Positioned(
                   child: widget.isButton
                       ? Container(
-                          margin: const EdgeInsets.only(bottom: 10),
+                          margin: const EdgeInsets.only(bottom: 30),
                           width: 60,
                           child: GestureDetector(
                               onTap: () {
-                                _onTabClick(null, widget.len);
+                                _onTabClick(TabItemInfo(
+                                    title: 'onButton', index: widget.len));
                               },
                               child: Image.asset(_bigImg)),
                         )
@@ -88,13 +92,12 @@ class _WaterTabBarState extends State<WaterTabBar> {
     );
   }
 
-  void _onTabClick(TabItemInfo node, int i) {
-    print(i);
+  void _onTabClick(TabItemInfo node) {
     setState(() {
-      _activeIndex = i;
+      _activeIndex = node.index;
       _bigImg =
-          node == null ? 'images/post_highlight.png' : 'images/post_normal.png';
+          node.title == 'onButton' ? 'images/post_highlight.png' : 'images/post_normal.png';
     });
-    widget.onTabClick(node, i);
+    widget.onTabClick(node);
   }
 }

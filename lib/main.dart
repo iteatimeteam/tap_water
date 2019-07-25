@@ -87,11 +87,10 @@ class _MyAppPageState extends State<_MyAppPage> {
         ));
   }
 
-  void onTabClick(TabItemInfo node, int i) {
+  void onTabClick(TabItemInfo node) {
     setState(() {
-      _index = i;
+      _index = node.index;
     });
-    print('$node $i');
-    // print('$node $index');
+    print('$node');
   }
 }
