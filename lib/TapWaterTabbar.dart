@@ -1,3 +1,5 @@
+/** 该页面以废弃 */
+
 import 'package:flutter/material.dart';
 import 'package:tap_water_tab_bar/tab_item.dart';
 import 'package:tap_water_tab_bar/tap_water_tab_bar.dart';
@@ -28,7 +30,7 @@ class NavigationIconView {
 
 class TapWaterTabbar extends StatefulWidget {
   final bool isButton;
-  final List<TabItemInfo> tabItems;
+  final List<TabItem> tabItems;
   TapWaterTabbar({this.tabItems, this.isButton = false}) {
 //    final int _len = this.btmNavbar.length;
 //    // final int _len = 5;
