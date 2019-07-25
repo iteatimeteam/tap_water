@@ -42,6 +42,6 @@ updated
 
  演示 |  主要代码贡献方及介绍
 :-------------:|:-------------:
-| ![](http://ww2.sinaimg.cn/large/006tNc79gy1g544k1fcdjg30b20kzn2q.gif) | <a href="https://github.com/DargonLee"><img src="https://avatars1.githubusercontent.com/u/13093607?s=400&v=4"></a> </p>[**@DargonLee**]( https://github.com/DargonLee ) </p>[《TabBar基础版本，不带加号按钮 issue#11》]( https://github.com/iteatimeteam/tap_water/issues/11 ) 
-![](http://ww4.sinaimg.cn/large/006tNc79gy1g59kad16rdg30b20kzn29.gif) | <a href="https://github.com/SuXiaoya"><img src="https://avatars1.githubusercontent.com/u/11497470?s=400&v=4"></a></p> [@苏筱雅]( https://github.com/SuXiaoya ) </p> [《TabBar 加号按钮未封装版本，带加号按钮 #8》]( https://github.com/iteatimeteam/tap_water/issues/8 ) 
+![](http://ww2.sinaimg.cn/large/006tNc79gy1g544k1fcdjg30b20kzn2q.gif) | <a href="https://github.com/DargonLee"><img src="https://avatars1.githubusercontent.com/u/13093607?s=400&v=4"></a> </p>[**@DargonLee**]( https://github.com/DargonLee ) </p>[《TabBar基础版本，不带加号按钮 issue#11》]( https://github.com/iteatimeteam/tap_water/issues/11) 
+![](http://ww2.sinaimg.cn/large/006tNc79gy1g5by04hgd9g30b20kz786.gif) | <a href="https://github.com/SuXiaoya"><img src="https://avatars1.githubusercontent.com/u/11497470?s=400&v=4"></a></p> [@苏筱雅]( https://github.com/SuXiaoya ) </p> [《TabBar 加号按钮未封装版本，带加号按钮 #8》]( https://github.com/iteatimeteam/tap_water/issues/8 ) 
 
