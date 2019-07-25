@@ -15,7 +15,7 @@ Thanks for considering to this repository. Before you submit your issue, please 
 
  iPhoneX+ | iPhone (except for iPhoneX+) | android 
  :-------------:|:-------------:|:-------------:
-![](http://ww4.sinaimg.cn/large/006tNc79gy1g59kad16rdg30b20kzn29.gif) | ![](http://ww1.sinaimg.cn/large/006tNc79gy1g5bvpae0u8j30ku112dj9.jpg) | ![](http://ww3.sinaimg.cn/large/006tNc79gy1g5bv6com75j30ks11sjsh.jpg)
+![](http://ww2.sinaimg.cn/large/006tNc79gy1g544k1fcdjg30b20kzn2q.gif)  | ![](http://ww1.sinaimg.cn/large/006tNc79gy1g5bvpae0u8j30ku112dj9.jpg) | ![](http://ww3.sinaimg.cn/large/006tNc79gy1g5bv6com75j30ks11sjsh.jpg)
 
 
 
