@@ -58,6 +58,7 @@ class _MyAppPageState extends State<_MyAppPage> {
   Widget build(BuildContext context) {
     return WaterTabBar(
         isButton: true,
+        selectedColor: Colors.green,
         appBar: NavigationBar(),
         body: _pages[_index],
         btmNavbar: <NavigationIconView>[

@@ -19,10 +19,20 @@ class NavigationIconView {
 
 class WaterTabBar extends StatefulWidget {
   final bool isButton;
+
+  /// 是否有加号按钮
   final Widget appBar;
+
+  /// appBar Widget
   final Widget body;
+
+  /// body Widget
   List<NavigationIconView> btmNavbar = [];
   final Function onTabClick;
+
+  /// 组件通信
+  final Color selectedColor;
+  final Color buttonSelectedColor;
   int btnIndex;
   int len;
   WaterTabBar(
@@ -30,6 +40,8 @@ class WaterTabBar extends StatefulWidget {
       this.body,
       this.appBar,
       this.btmNavbar,
+      this.selectedColor = Colors.blue,
+      this.buttonSelectedColor = Colors.blue,
       this.isButton = false,
       this.onTabClick})
       : super(key: key) {
@@ -69,7 +81,7 @@ class _WaterTabBarState extends State<WaterTabBar> {
               navigationIconView.item)
           .toList(),
       currentIndex: _activeIndex,
-      fixedColor: Colors.blue,
+      fixedColor: widget.selectedColor,
       type: BottomNavigationBarType.fixed,
       onTap: _onTabClick,
     );
@@ -103,12 +115,15 @@ class _WaterTabBarState extends State<WaterTabBar> {
         index -= 1;
       }
       setState(() {
-        _addBgc = index == widget.btnIndex ? Colors.blue : Colors.grey;
+        _addBgc =
+            index == widget.btnIndex ? widget.buttonSelectedColor : Colors.grey;
       });
     }
     setState(() {
       _activeIndex = index;
     });
-    widget.onTabClick(_activeIndex);
+    if (widget.onTabClick != null) {
+      widget.onTabClick(_activeIndex);
+    }
   }
 }
