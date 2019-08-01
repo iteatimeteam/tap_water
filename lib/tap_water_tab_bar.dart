@@ -18,22 +18,31 @@ class NavigationIconView {
 }
 
 class WaterTabBar extends StatefulWidget {
+  /// 是否有加号按钮
   final bool isButton;
 
-  /// 是否有加号按钮
+  /// appBar Widget
   final Widget appBar;
 
-  /// appBar Widget
+  /// 主体内容
   final Widget body;
 
-  /// body Widget
+  /// 底部按钮配置
   List<NavigationIconView> btmNavbar = [];
-  final Function onTabClick;
 
   /// 组件通信
+  final Function onTabClick;
+
+  /// 底部button选中颜色
   final Color selectedColor;
+
+  /// +号按钮选中颜色
   final Color buttonSelectedColor;
+
+  /// +号按钮索引
   int btnIndex;
+
+  /// btmNavbar数组长度
   int len;
   WaterTabBar(
       {Key key,
@@ -69,13 +78,15 @@ class WaterTabBar extends StatefulWidget {
 }
 
 class _WaterTabBarState extends State<WaterTabBar> {
+  /// 选中的索引
   int _activeIndex = 0;
+  /// +号按钮背景色
   Color _addBgc = Colors.grey;
 
   @override
   Widget build(BuildContext context) {
     var _items = BottomNavigationBar(
-      // 底部导航栏
+      /// 底部导航栏
       items: widget.btmNavbar
           .map((NavigationIconView navigationIconView) =>
               navigationIconView.item)
@@ -109,6 +120,7 @@ class _WaterTabBarState extends State<WaterTabBar> {
     );
   }
 
+  /// 单击事件
   void _onTabClick(int index) {
     if (widget.isButton) {
       if (index == widget.len + 1) {
