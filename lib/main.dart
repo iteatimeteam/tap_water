@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'widget/navigation_bar.dart';
 // import 'TapWaterTabbar.dart';
 import 'tap_water_tab_bar.dart';
-import './tab_item.dart';
 
 void main() => runApp(MyApp());
 
@@ -50,47 +49,51 @@ class _MyAppPageState extends State<_MyAppPage> {
       alignment: Alignment.center,
       child: Text('页面5'),
     ),
+    Align(
+      alignment: Alignment.center,
+      child: Text('页面6'),
+    ),
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WaterTabBar(
+        isButton: true,
         appBar: NavigationBar(),
-        body: Stack(
-          children: <Widget>[
-            _pages[_index],
-            WaterTabBar(
-                isButton: true,
-                btmNavbar: [
-                  TabItemInfo(
-                      title: '微信1',
-                      icon: Icons.ac_unit,
-                      activeIcon: Icons.backspace,
-                      selectedColor: Colors.green),
-                  TabItemInfo(
-                      title: '微信2',
-                      icon: Icons.ac_unit,
-                      activeIcon: Icons.cached,
-                      selectedColor: Colors.green),
-                  TabItemInfo(
-                      title: '微信3',
-                      icon: Icons.ac_unit,
-                      activeIcon: Icons.edit,
-                      selectedColor: Colors.green),
-                  TabItemInfo(
-                      title: '微信4',
-                      icon: Icons.ac_unit,
-                      activeIcon: Icons.cached,
-                      selectedColor: Colors.green),
-                ],
-                onTabClick: onTabClick),
-          ],
-        ));
+        body: _pages[_index],
+        btmNavbar: <NavigationIconView>[
+          NavigationIconView(
+            title: '微信1',
+            icon: Icon(Icons.ac_unit),
+            activeIcon: Icon(Icons.backspace),
+          ),
+          NavigationIconView(
+            title: '微信2',
+            icon: Icon(Icons.ac_unit),
+            activeIcon: Icon(Icons.cached),
+          ),
+          NavigationIconView(
+            title: '微信3',
+            icon: Icon(Icons.ac_unit),
+            activeIcon: Icon(Icons.edit),
+          ),
+          NavigationIconView(
+            title: '微信4',
+            icon: Icon(Icons.ac_unit),
+            activeIcon: Icon(Icons.cached),
+          ),
+          // NavigationIconView(
+          //   title: '微信6',
+          //   icon: Icon(Icons.ac_unit),
+          //   activeIcon: Icon(Icons.cached),
+          // ),
+        ],
+        onTabClick: onTabClick);
   }
 
-  void onTabClick(TabItemInfo node) {
+  void onTabClick(int index) {
     setState(() {
-      _index = node.index;
+      _index = index;
     });
-    print('$node');
+    print('$index');
   }
 }

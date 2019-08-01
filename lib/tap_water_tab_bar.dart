@@ -1,27 +1,54 @@
 import 'package:flutter/material.dart';
-import 'package:tap_water_tab_bar/tab_item.dart';
+
+class NavigationIconView {
+  final BottomNavigationBarItem item;
+  NavigationIconView({
+    Key key,
+    final String title = '',
+    final Widget icon,
+    final Widget activeIcon,
+  }) : item = BottomNavigationBarItem(
+          icon: icon,
+          activeIcon: activeIcon,
+          title: Text(
+            title,
+          ),
+          backgroundColor: Colors.white,
+        );
+}
 
 class WaterTabBar extends StatefulWidget {
   final bool isButton;
-  List<TabItemInfo> btmNavbar = [];
+  final Widget appBar;
+  final Widget body;
+  List<NavigationIconView> btmNavbar = [];
   final Function onTabClick;
-  int len = 0;
-  WaterTabBar({Key key, this.btmNavbar, this.isButton = false, this.onTabClick})
+  int btnIndex;
+  int len;
+  WaterTabBar(
+      {Key key,
+      this.body,
+      this.appBar,
+      this.btmNavbar,
+      this.isButton = false,
+      this.onTabClick})
       : super(key: key) {
-    // 解决点击页面问题
-    this
-        .btmNavbar
-        .asMap()
-        .map((int i, TabItemInfo v) => MapEntry(i, v.index = i));
-    this.len = this.btmNavbar.length;
-
-    /// 解决tab为基数问题
+    // 解决tab为基数问题
     if (this.isButton) {
-      if (len % 2 == 0) {
-        this.btmNavbar.insert(len ~/ 2, null);
+      this.len = this.btmNavbar.length;
+      if (this.len % 2 == 0) {
+        // btmNavbar偶数
+        this.btnIndex = this.len ~/ 2;
+        this.btmNavbar.insert(this.len ~/ 2,
+            NavigationIconView(icon: Icon(Icons.ac_unit, size: 0)));
       } else {
-        this.btmNavbar.insert(len ~/ 2 + 1, null);
-        this.btmNavbar.insert(len ~/ 2 + 2, null);
+        // btmNavbar基数
+        this.btnIndex = this.len ~/ 2 + 1;
+        this.btmNavbar.insert(this.len ~/ 2 + 1,
+            NavigationIconView(icon: Icon(Icons.ac_unit, size: 0)));
+        this
+            .btmNavbar
+            .add(NavigationIconView(icon: Icon(Icons.ac_unit, size: 0)));
       }
     }
   }
@@ -31,73 +58,57 @@ class WaterTabBar extends StatefulWidget {
 
 class _WaterTabBarState extends State<WaterTabBar> {
   int _activeIndex = 0;
-  String _bigImg = 'images/post_normal.png';
+  Color _addBgc = Colors.grey;
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Align(
-            alignment: Alignment.bottomCenter,
-            child: Stack(
-              overflow: Overflow.visible,
-              alignment: Alignment.bottomCenter,
-              children: <Widget>[
-                Container(
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black12,
-                          offset: Offset(0, -1),
-                          blurRadius: 8)
-                    ],
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: widget.btmNavbar
-                        .asMap()
-                        .map((int i, TabItemInfo v) => MapEntry(
-                            i,
-                            v != null
-                                ? TabItem(
-                                    itemInfo: v,
-                                    isSelected: v.index == _activeIndex,
-                                    onTabClick: _onTabClick)
-                                : (widget.isButton ? TabItem() : Text(''))))
-                        .values
-                        .toList(),
-                  ),
-                ),
-                Positioned(
-                  child: widget.isButton
-                      ? Container(
-                          margin: const EdgeInsets.only(bottom: 30),
-                          width: 60,
-                          child: GestureDetector(
-                              onTap: () {
-                                _onTabClick(TabItemInfo(
-                                    title: 'onButton', index: widget.len));
-                              },
-                              child: Image.asset(_bigImg)),
-                        )
-                      : Text(''),
-                ),
-              ],
-            )),
-      ],
+    var _items = BottomNavigationBar(
+      // 底部导航栏
+      items: widget.btmNavbar
+          .map((NavigationIconView navigationIconView) =>
+              navigationIconView.item)
+          .toList(),
+      currentIndex: _activeIndex,
+      fixedColor: Colors.blue,
+      type: BottomNavigationBarType.fixed,
+      onTap: _onTabClick,
+    );
+    return Scaffold(
+      appBar: widget.appBar,
+      body: widget.body,
+      bottomNavigationBar: _items,
+      floatingActionButton: widget.isButton
+          ? FloatingActionButton(
+              elevation: 6,
+              highlightElevation: 6,
+              child: Icon(
+                Icons.add,
+                color: Colors.white,
+                size: 36,
+              ),
+              onPressed: () {
+                _onTabClick(widget.btnIndex);
+              },
+              shape: CircleBorder(
+                  side: BorderSide(color: Colors.white, width: 3.5)),
+              backgroundColor: _addBgc)
+          : Text(''),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
-  void _onTabClick(TabItemInfo node) {
+  void _onTabClick(int index) {
+    if (widget.isButton) {
+      if (index == widget.len + 1) {
+        index -= 1;
+      }
+      setState(() {
+        _addBgc = index == widget.btnIndex ? Colors.blue : Colors.grey;
+      });
+    }
     setState(() {
-      _activeIndex = node.index;
-      _bigImg =
-          node.title == 'onButton' ? 'images/post_highlight.png' : 'images/post_normal.png';
+      _activeIndex = index;
     });
-    widget.onTabClick(node);
+    widget.onTabClick(_activeIndex);
   }
 }
